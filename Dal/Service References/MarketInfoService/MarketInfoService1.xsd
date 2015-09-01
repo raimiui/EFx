@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EZFX.API.Common" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EZFX.API.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.prp1-ezfx.com/API/MarketInfoService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="https://api.prp1-ezfx.com/API/MarketInfoService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/EZFX.Infrastructure.ErrorHandling" />
+  <xs:import schemaLocation="https://api.prp1-ezfx.com/API/MarketInfoService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:simpleType name="Products">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Undefined">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DayTrading">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Forward" />
+      <xs:enumeration value="Limit">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Products" nillable="true" type="tns:Products" />
+  <xs:complexType name="Session">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SessionId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Tickets" nillable="true" type="tns:ArrayOfTicket" />
+          <xs:element minOccurs="0" name="Version" nillable="true" type="tns:Version" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Session" nillable="true" type="tns:Session" />
+  <xs:complexType name="APIOperationResult">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EZFX.Infrastructure.ErrorHandling" minOccurs="0" name="ErrorTicket" nillable="true" type="q1:OperationResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="APIOperationResult" nillable="true" type="tns:APIOperationResult" />
+  <xs:complexType name="ArrayOfTicket">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ticket" nillable="true" type="tns:Ticket" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTicket" nillable="true" type="tns:ArrayOfTicket" />
+  <xs:complexType name="Ticket">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TicketName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TicketValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Ticket" nillable="true" type="tns:Ticket" />
+  <xs:complexType name="Version">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Generation" type="xs:int" />
+      <xs:element minOccurs="0" name="Major" type="xs:int" />
+      <xs:element minOccurs="0" name="Minor" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Version" nillable="true" type="tns:Version" />
+  <xs:simpleType name="RateTypeIds">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Bid">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Ask">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Mid">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RateTypeIds" nillable="true" type="tns:RateTypeIds" />
+  <xs:complexType name="HistoricalQuotes">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BaseCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HistoricalQuotesList" nillable="true" type="tns:ArrayOfHistoricalQuote" />
+          <xs:element minOccurs="0" name="QuoteCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RateType" type="tns:RateTypeIds" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="HistoricalQuotes" nillable="true" type="tns:HistoricalQuotes" />
+  <xs:complexType name="ArrayOfHistoricalQuote">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HistoricalQuote" nillable="true" type="tns:HistoricalQuote" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHistoricalQuote" nillable="true" type="tns:ArrayOfHistoricalQuote" />
+  <xs:complexType name="HistoricalQuote">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Close" type="xs:double" />
+      <xs:element minOccurs="0" name="High" type="xs:double" />
+      <xs:element minOccurs="0" name="Low" type="xs:double" />
+      <xs:element minOccurs="0" name="Open" type="xs:double" />
+      <xs:element minOccurs="0" name="createUTC" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HistoricalQuote" nillable="true" type="tns:HistoricalQuote" />
+  <xs:complexType name="Indices">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IndicesList" nillable="true" type="tns:ArrayOfIndex" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Indices" nillable="true" type="tns:Indices" />
+  <xs:complexType name="ArrayOfIndex">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Index" nillable="true" type="tns:Index" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIndex" nillable="true" type="tns:ArrayOfIndex" />
+  <xs:complexType name="Index">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChangePercent" type="xs:double" />
+      <xs:element minOccurs="0" name="LastUpdate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PreviousValue" type="xs:double" />
+      <xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Index" nillable="true" type="tns:Index" />
+  <xs:complexType name="News">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="NewsList" nillable="true" type="tns:ArrayOfNewsFeed" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="News" nillable="true" type="tns:News" />
+  <xs:complexType name="ArrayOfNewsFeed">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NewsFeed" nillable="true" type="tns:NewsFeed" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNewsFeed" nillable="true" type="tns:ArrayOfNewsFeed" />
+  <xs:complexType name="NewsFeed">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ArticleBody" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArticleDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ArticleHeading" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArticleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreditLine" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NewsFeed" nillable="true" type="tns:NewsFeed" />
+  <xs:complexType name="Indicator">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Importance" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="IndicatorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsValuePreviousRevised" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LanguageSymbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Period" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValueActual" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ValueForecast" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ValuePrevious" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Indicator" nillable="true" type="tns:Indicator" />
+  <xs:simpleType name="IndicatorImportance">
+    <xs:annotation>
+      <xs:appinfo>
+        <ActualType Name="unsignedByte" Namespace="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="High" />
+      <xs:enumeration value="Medium" />
+      <xs:enumeration value="Low" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IndicatorImportance" nillable="true" type="tns:IndicatorImportance" />
+  <xs:complexType name="ArrayOfIndicatorImportance">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IndicatorImportance" type="tns:IndicatorImportance" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIndicatorImportance" nillable="true" type="tns:ArrayOfIndicatorImportance" />
+  <xs:complexType name="Indicators">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IndicatorsList" nillable="true" type="tns:ArrayOfIndicator" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Indicators" nillable="true" type="tns:Indicators" />
+  <xs:complexType name="ArrayOfIndicator">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Indicator" nillable="true" type="tns:Indicator" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIndicator" nillable="true" type="tns:ArrayOfIndicator" />
+  <xs:complexType name="Outlook">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OutlookItemsList" nillable="true" type="tns:ArrayOfOutlookItem" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Outlook" nillable="true" type="tns:Outlook" />
+  <xs:complexType name="ArrayOfOutlookItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OutlookItem" nillable="true" type="tns:OutlookItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOutlookItem" nillable="true" type="tns:ArrayOfOutlookItem" />
+  <xs:complexType name="OutlookItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PublishDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OutlookItem" nillable="true" type="tns:OutlookItem" />
+  <xs:complexType name="InterestRates">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Interests" nillable="true" type="q2:ArrayOfKeyValueOfstringArrayOfKeyValueOfInterestRatesPeriodsdoubleHEZkgemYty7Ep6D1" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InterestRates" nillable="true" type="tns:InterestRates" />
+  <xs:simpleType name="InterestRatesPeriods">
+    <xs:annotation>
+      <xs:appinfo>
+        <ActualType Name="unsignedByte" Namespace="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="All" />
+      <xs:enumeration value="OneWeek" />
+      <xs:enumeration value="OneMonth" />
+      <xs:enumeration value="ThreeMonths" />
+      <xs:enumeration value="SixMonths" />
+      <xs:enumeration value="OneYear" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InterestRatesPeriods" nillable="true" type="tns:InterestRatesPeriods" />
+  <xs:complexType name="InsideViewer">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AverageRate" type="xs:double" />
+          <xs:element minOccurs="0" name="AverageStopLossRate" type="xs:double" />
+          <xs:element minOccurs="0" name="AverageTakeProfitRate" type="xs:double" />
+          <xs:element minOccurs="0" name="BuyPercent" type="xs:double" />
+          <xs:element minOccurs="0" name="CurrencyPairDealsPercent" type="xs:double" />
+          <xs:element minOccurs="0" name="CurrencyPairRanking" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InsideViewer" nillable="true" type="tns:InsideViewer" />
+  <xs:complexType name="Currencies">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CurrenciesList" nillable="true" type="q3:ArrayOfstring" />
+          <xs:element minOccurs="0" name="CurrenciesSettingsList" nillable="true" type="tns:ArrayOfCurrency" />
+          <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RestrictedCurrenciesList" nillable="true" type="q4:ArrayOfstring" />
+          <xs:element minOccurs="0" name="RestrictedCurrenciesSettingsList" nillable="true" type="tns:ArrayOfCurrency" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Currencies" nillable="true" type="tns:Currencies" />
+  <xs:complexType name="ArrayOfCurrency">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Currency" nillable="true" type="tns:Currency" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCurrency" nillable="true" type="tns:ArrayOfCurrency" />
+  <xs:complexType name="Currency">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Kind" type="tns:CurrencyKind" />
+      <xs:element minOccurs="0" name="Symbol" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Currency" nillable="true" type="tns:Currency" />
+  <xs:simpleType name="CurrencyKind">
+    <xs:list>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Regular" />
+          <xs:enumeration value="Commodity" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:list>
+  </xs:simpleType>
+  <xs:element name="CurrencyKind" nillable="true" type="tns:CurrencyKind" />
+  <xs:complexType name="NonBusinessDays">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DateList" nillable="true" type="q5:ArrayOfdateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NonBusinessDays" nillable="true" type="tns:NonBusinessDays" />
+  <xs:complexType name="Quotes">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="QuotesList" nillable="true" type="tns:ArrayOfQuote" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Quotes" nillable="true" type="tns:Quotes" />
+  <xs:complexType name="ArrayOfQuote">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Quote" nillable="true" type="tns:Quote" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfQuote" nillable="true" type="tns:ArrayOfQuote" />
+  <xs:complexType name="Quote">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Ask" type="xs:double" />
+          <xs:element minOccurs="0" name="BaseCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Bid" type="xs:double" />
+          <xs:element minOccurs="0" name="ChangePercent" type="xs:double" />
+          <xs:element minOccurs="0" name="High" type="xs:double" />
+          <xs:element minOccurs="0" name="Low" type="xs:double" />
+          <xs:element minOccurs="0" name="PreviousHigh" type="xs:double" />
+          <xs:element minOccurs="0" name="PreviousLow" type="xs:double" />
+          <xs:element minOccurs="0" name="QuoteCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TimeStamp" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Quote" nillable="true" type="tns:Quote" />
+  <xs:complexType name="CurrencyPairs">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CurrencyPairsList" nillable="true" type="tns:ArrayOfCurrencyPair" />
+          <xs:element minOccurs="0" name="DefaultCurrencyPairsList" nillable="true" type="tns:ArrayOfCurrencyPair" />
+          <xs:element minOccurs="0" name="IsDefaultFractional" type="xs:boolean" />
+          <xs:element minOccurs="0" name="RestrictedCurrencyPairsList" nillable="true" type="tns:ArrayOfCurrencyPair" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CurrencyPairs" nillable="true" type="tns:CurrencyPairs" />
+  <xs:complexType name="ArrayOfCurrencyPair">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CurrencyPair" nillable="true" type="tns:CurrencyPair" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCurrencyPair" nillable="true" type="tns:ArrayOfCurrencyPair" />
+  <xs:complexType name="CurrencyPair">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BaseCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BaseCurrencySettings" nillable="true" type="tns:Currency" />
+          <xs:element minOccurs="0" name="DecimalPlaces" type="xs:short" />
+          <xs:element minOccurs="0" name="FractionalPlaces" type="xs:short" />
+          <xs:element minOccurs="0" name="IncrementValue" type="xs:double" />
+          <xs:element minOccurs="0" name="NonBaseCurrencySettings" nillable="true" type="tns:Currency" />
+          <xs:element minOccurs="0" name="NumOfIncrement" type="xs:double" />
+          <xs:element minOccurs="0" name="QuoteCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Units" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CurrencyPair" nillable="true" type="tns:CurrencyPair" />
+  <xs:complexType name="IndicatorsSettings">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Locations" nillable="true" type="q6:ArrayOfstring" />
+          <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Names" nillable="true" type="q7:ArrayOfstring" />
+          <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Periods" nillable="true" type="q8:ArrayOfstring" />
+          <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Units" nillable="true" type="q9:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IndicatorsSettings" nillable="true" type="tns:IndicatorsSettings" />
+  <xs:complexType name="CrossCurrencyRates">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element name="CurrencyRates" nillable="true" type="tns:ArrayOfSimpleQuote" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CrossCurrencyRates" nillable="true" type="tns:CrossCurrencyRates" />
+  <xs:complexType name="ArrayOfSimpleQuote">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SimpleQuote" nillable="true" type="tns:SimpleQuote" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSimpleQuote" nillable="true" type="tns:ArrayOfSimpleQuote" />
+  <xs:complexType name="SimpleQuote">
+    <xs:sequence>
+      <xs:element name="BuyCurrency" nillable="true" type="xs:string" />
+      <xs:element name="Rate" nillable="true" type="xs:string" />
+      <xs:element name="SellCurrency" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SimpleQuote" nillable="true" type="tns:SimpleQuote" />
+  <xs:complexType name="Holidays">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:APIOperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="HolidaysList" nillable="true" type="tns:ArrayOfHoliday" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Holidays" nillable="true" type="tns:Holidays" />
+  <xs:complexType name="ArrayOfHoliday">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Holiday" nillable="true" type="tns:Holiday" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHoliday" nillable="true" type="tns:ArrayOfHoliday" />
+  <xs:complexType name="Holiday">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="HolidayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LanguageSymbol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Holiday" nillable="true" type="tns:Holiday" />
+</xs:schema>

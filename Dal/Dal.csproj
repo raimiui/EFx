@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{14BB3F0C-EDFD-48C9-8E55-07C9E895047A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EFx.Dal</RootNamespace>
+    <AssemblyName>EFx.Dal</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\lib\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Automapping.cs" />
+    <Compile Include="Daos\HistoricalQuoteDao.cs" />
+    <Compile Include="Daos\CurrencyPairsDao.cs" />
+    <Compile Include="Daos\NHibernateDao.cs" />
+    <Compile Include="Daos\QuoteDao.cs" />
+    <Compile Include="Daos\TradeDao.cs" />
+    <Compile Include="Helpers\MarketInfoServiceHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\MarketInfoService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\TradingService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Daos\TradingDao.cs" />
+    <Compile Include="Helpers\TraddingServiceHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MarketInfoService\EasyForexMarketInfoService.wsdl" />
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.APIOperationResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.CrossCurrencyRates.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.Currencies.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.CurrencyPairPopularityResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.CurrencyPairs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.HistoricalQuotes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.Holidays.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.Indicators.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.IndicatorsSettings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.Indices.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.InsideViewer.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.InsideViewerCurrRate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.InterestRates.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.News.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.NonBusinessDays.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.Outlook.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.Quotes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\EFx.Dal.MarketInfoService.Session.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MarketInfoService\MarketInfoService.xsd" />
+    <None Include="Service References\MarketInfoService\MarketInfoService1.xsd" />
+    <None Include="Service References\MarketInfoService\MarketInfoService2.xsd" />
+    <None Include="Service References\MarketInfoService\MarketInfoService3.xsd" />
+    <None Include="Service References\MarketInfoService\MarketInfoService4.xsd" />
+    <None Include="Service References\MarketInfoService\MarketInfoService5.xsd" />
+    <None Include="Service References\TradingService\EasyForexTradingService.wsdl" />
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.APIOperationResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.DayTrading.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.ExpiryDate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.Forward.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.Limit.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.MyAccount.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.MyPosition.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.MyStatement.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.PersonalSpreadsInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.ProductSet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.Quotes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.RollingDatesResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.Session.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.SpreadsTemplateInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.TradableQuotes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.UserLoginInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\EFx.Dal.TradingService.UserSettings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TradingService\TradingService.xsd" />
+    <None Include="Service References\TradingService\TradingService1.xsd" />
+    <None Include="Service References\TradingService\TradingService2.xsd" />
+    <None Include="Service References\TradingService\TradingService3.xsd" />
+    <None Include="Service References\TradingService\TradingService4.xsd" />
+    <None Include="Service References\TradingService\TradingService5.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\MarketInfoService\" />
+    <WCFMetadataStorage Include="Service References\TradingService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MarketInfoService\MarketInfoService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MarketInfoService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MarketInfoService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MarketInfoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TradingService\TradingService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TradingService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TradingService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TradingService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\Quote.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Trade.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IDal\IDal.csproj">
+      <Project>{166029F5-1E8E-4281-832C-0563E39257D7}</Project>
+      <Name>IDal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{3EF03E45-814B-4142-B932-0D6E580FC1CC}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\HistoricalQuote.hbm.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

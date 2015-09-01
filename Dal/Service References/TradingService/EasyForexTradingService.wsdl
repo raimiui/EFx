@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="EasyForexTradingService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="TradingServiceHttp_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://api.prp1-ezfx.com/API/TradingService.svc?xsd=xsd2" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://api.prp1-ezfx.com/API/TradingService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://api.prp1-ezfx.com/API/TradingService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/EZFX.API.Common" />
+      <xsd:import schemaLocation="https://api.prp1-ezfx.com/API/TradingService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/EZFX.Infrastructure.ErrorHandling" />
+      <xsd:import schemaLocation="https://api.prp1-ezfx.com/API/TradingService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://api.prp1-ezfx.com/API/TradingService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/EZFX.Model.Classes" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IEasyForexTradingService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_Logout_InputMessage">
+    <wsdl:part name="parameters" element="tns:Logout" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_Logout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetTradableQuotes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradableQuotes" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetTradableQuotes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradableQuotesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_NewDayTradingDeal_InputMessage">
+    <wsdl:part name="parameters" element="tns:NewDayTradingDeal" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_NewDayTradingDeal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NewDayTradingDealResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_NewForwardDeal_InputMessage">
+    <wsdl:part name="parameters" element="tns:NewForwardDeal" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_NewForwardDeal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NewForwardDealResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_NewLimitOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:NewLimitOrder" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_NewLimitOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NewLimitOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_UpdateDayTrading_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDayTrading" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_UpdateDayTrading_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDayTradingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_UpdateForward_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateForward" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_UpdateForward_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateForwardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_UpdateLimit_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateLimit" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_UpdateLimit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateLimitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetDayTradingStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDayTradingStatus" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetDayTradingStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDayTradingStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetForwardStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetForwardStatus" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetForwardStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetForwardStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetLimitStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLimitStatus" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetLimitStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLimitStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_CloseDayTrading_InputMessage">
+    <wsdl:part name="parameters" element="tns:CloseDayTrading" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_CloseDayTrading_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CloseDayTradingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_CloseForward_InputMessage">
+    <wsdl:part name="parameters" element="tns:CloseForward" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_CloseForward_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CloseForwardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_CancelLimitOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelLimitOrder" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_CancelLimitOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelLimitOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetMyPosition_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyPosition" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetMyPosition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyPositionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetAccountStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountStatus" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetAccountStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetQuotes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuotes" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetQuotes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuotesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetUserSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserSettings" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetUserSettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetExpiryDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExpiryDate" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetExpiryDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExpiryDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetProductSet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductSet" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetProductSet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetActiveSpreadsTemplate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveSpreadsTemplate" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetActiveSpreadsTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveSpreadsTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetAllowPersonalSpreads_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllowPersonalSpreads" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetAllowPersonalSpreads_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllowPersonalSpreadsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetClosedPosition_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClosedPosition" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetClosedPosition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClosedPositionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetUserLoginInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserLoginInfo" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetUserLoginInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserLoginInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetMyStatement_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyStatement" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetMyStatement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyStatementResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetRollingDates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRollingDates" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexTradingService_GetRollingDates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRollingDatesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IEasyForexTradingService">
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/Login" message="tns:IEasyForexTradingService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/LoginResponse" message="tns:IEasyForexTradingService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/Logout" message="tns:IEasyForexTradingService_Logout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/LogoutResponse" message="tns:IEasyForexTradingService_Logout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTradableQuotes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetTradableQuotes" message="tns:IEasyForexTradingService_GetTradableQuotes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetTradableQuotesResponse" message="tns:IEasyForexTradingService_GetTradableQuotes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NewDayTradingDeal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/NewDayTradingDeal" message="tns:IEasyForexTradingService_NewDayTradingDeal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/NewDayTradingDealResponse" message="tns:IEasyForexTradingService_NewDayTradingDeal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NewForwardDeal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/NewForwardDeal" message="tns:IEasyForexTradingService_NewForwardDeal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/NewForwardDealResponse" message="tns:IEasyForexTradingService_NewForwardDeal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NewLimitOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/NewLimitOrder" message="tns:IEasyForexTradingService_NewLimitOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/NewLimitOrderResponse" message="tns:IEasyForexTradingService_NewLimitOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDayTrading">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/UpdateDayTrading" message="tns:IEasyForexTradingService_UpdateDayTrading_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/UpdateDayTradingResponse" message="tns:IEasyForexTradingService_UpdateDayTrading_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateForward">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/UpdateForward" message="tns:IEasyForexTradingService_UpdateForward_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/UpdateForwardResponse" message="tns:IEasyForexTradingService_UpdateForward_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLimit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/UpdateLimit" message="tns:IEasyForexTradingService_UpdateLimit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/UpdateLimitResponse" message="tns:IEasyForexTradingService_UpdateLimit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDayTradingStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetDayTradingStatus" message="tns:IEasyForexTradingService_GetDayTradingStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetDayTradingStatusResponse" message="tns:IEasyForexTradingService_GetDayTradingStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetForwardStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetForwardStatus" message="tns:IEasyForexTradingService_GetForwardStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetForwardStatusResponse" message="tns:IEasyForexTradingService_GetForwardStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLimitStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetLimitStatus" message="tns:IEasyForexTradingService_GetLimitStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetLimitStatusResponse" message="tns:IEasyForexTradingService_GetLimitStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseDayTrading">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/CloseDayTrading" message="tns:IEasyForexTradingService_CloseDayTrading_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/CloseDayTradingResponse" message="tns:IEasyForexTradingService_CloseDayTrading_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseForward">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/CloseForward" message="tns:IEasyForexTradingService_CloseForward_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/CloseForwardResponse" message="tns:IEasyForexTradingService_CloseForward_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelLimitOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/CancelLimitOrder" message="tns:IEasyForexTradingService_CancelLimitOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/CancelLimitOrderResponse" message="tns:IEasyForexTradingService_CancelLimitOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyPosition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetMyPosition" message="tns:IEasyForexTradingService_GetMyPosition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetMyPositionResponse" message="tns:IEasyForexTradingService_GetMyPosition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetAccountStatus" message="tns:IEasyForexTradingService_GetAccountStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetAccountStatusResponse" message="tns:IEasyForexTradingService_GetAccountStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuotes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetQuotes" message="tns:IEasyForexTradingService_GetQuotes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetQuotesResponse" message="tns:IEasyForexTradingService_GetQuotes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserSettings">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetUserSettings" message="tns:IEasyForexTradingService_GetUserSettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetUserSettingsResponse" message="tns:IEasyForexTradingService_GetUserSettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExpiryDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetExpiryDate" message="tns:IEasyForexTradingService_GetExpiryDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetExpiryDateResponse" message="tns:IEasyForexTradingService_GetExpiryDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductSet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetProductSet" message="tns:IEasyForexTradingService_GetProductSet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetProductSetResponse" message="tns:IEasyForexTradingService_GetProductSet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveSpreadsTemplate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetActiveSpreadsTemplate" message="tns:IEasyForexTradingService_GetActiveSpreadsTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetActiveSpreadsTemplateResponse" message="tns:IEasyForexTradingService_GetActiveSpreadsTemplate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllowPersonalSpreads">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetAllowPersonalSpreads" message="tns:IEasyForexTradingService_GetAllowPersonalSpreads_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetAllowPersonalSpreadsResponse" message="tns:IEasyForexTradingService_GetAllowPersonalSpreads_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClosedPosition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetClosedPosition" message="tns:IEasyForexTradingService_GetClosedPosition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetClosedPositionResponse" message="tns:IEasyForexTradingService_GetClosedPosition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLoginInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetUserLoginInfo" message="tns:IEasyForexTradingService_GetUserLoginInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetUserLoginInfoResponse" message="tns:IEasyForexTradingService_GetUserLoginInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyStatement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetMyStatement" message="tns:IEasyForexTradingService_GetMyStatement_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetMyStatementResponse" message="tns:IEasyForexTradingService_GetMyStatement_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRollingDates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetRollingDates" message="tns:IEasyForexTradingService_GetRollingDates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexTradingService/GetRollingDatesResponse" message="tns:IEasyForexTradingService_GetRollingDates_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TradingServiceHttp" type="tns:IEasyForexTradingService">
+    <wsp:PolicyReference URI="#TradingServiceHttp_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTradableQuotes">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/GetTradableQuotes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewDayTradingDeal">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/NewDayTradingDeal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewForwardDeal">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/NewForwardDeal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewLimitOrder">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/NewLimitOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDayTrading">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/UpdateDayTrading" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateForward">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/UpdateForward" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLimit">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/UpdateLimit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDayTradingStatus">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/GetDayTradingStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetForwardStatus">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/GetForwardStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLimitStatus">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/GetLimitStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseDayTrading">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/CloseDayTrading" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseForward">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/CloseForward" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelLimitOrder">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/CancelLimitOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyPosition">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/GetMyPosition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountStatus">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/GetAccountStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuotes">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/GetQuotes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserSettings">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/GetUserSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExpiryDate">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/GetExpiryDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductSet">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/GetProductSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveSpreadsTemplate">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/GetActiveSpreadsTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllowPersonalSpreads">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/GetAllowPersonalSpreads" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClosedPosition">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/GetClosedPosition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLoginInfo">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/GetUserLoginInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyStatement">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/GetMyStatement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRollingDates">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexTradingService/GetRollingDates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EasyForexTradingService">
+    <wsdl:port name="TradingServiceHttp" binding="tns:TradingServiceHttp">
+      <soap:address location="https://api.prp1-ezfx.com/API/TradingService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

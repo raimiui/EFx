@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5635b894-0209-4f4f-9fc5-71252442caf1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://api.prp1-ezfx.com/api/TradingService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="TradingService.xsd" MetadataType="Schema" ID="ecf5e9c3-7cac-4125-9a0a-75a7f2830557" SourceId="1" SourceUrl="https://api.prp1-ezfx.com/API/TradingService.svc?xsd=xsd3" />
+    <MetadataFile FileName="TradingService1.xsd" MetadataType="Schema" ID="35a5dc13-9400-4247-be41-3cf06f9b6eeb" SourceId="1" SourceUrl="https://api.prp1-ezfx.com/API/TradingService.svc?xsd=xsd0" />
+    <MetadataFile FileName="TradingService2.xsd" MetadataType="Schema" ID="1d5e6d0a-8db4-42dc-899d-8cd86c6acd66" SourceId="1" SourceUrl="https://api.prp1-ezfx.com/API/TradingService.svc?xsd=xsd1" />
+    <MetadataFile FileName="TradingService.disco" MetadataType="Disco" ID="f7ec2da6-b985-4070-a4a2-e661ab00b723" SourceId="1" SourceUrl="https://api.prp1-ezfx.com/API/TradingService.svc?disco" />
+    <MetadataFile FileName="TradingService3.xsd" MetadataType="Schema" ID="cb4dc7aa-1ef8-49d0-b22d-1cd08a13e255" SourceId="1" SourceUrl="https://api.prp1-ezfx.com/API/TradingService.svc?xsd=xsd4" />
+    <MetadataFile FileName="EasyForexTradingService.wsdl" MetadataType="Wsdl" ID="6f0a381f-e341-4554-a37f-c02ca288fec6" SourceId="1" SourceUrl="https://api.prp1-ezfx.com/API/TradingService.svc?wsdl" />
+    <MetadataFile FileName="TradingService4.xsd" MetadataType="Schema" ID="082f599e-c572-4e53-9435-161f7e3a7441" SourceId="1" SourceUrl="https://api.prp1-ezfx.com/API/TradingService.svc?xsd=xsd5" />
+    <MetadataFile FileName="TradingService5.xsd" MetadataType="Schema" ID="9e165f1f-c366-4028-89da-94a01b21007c" SourceId="1" SourceUrl="https://api.prp1-ezfx.com/API/TradingService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

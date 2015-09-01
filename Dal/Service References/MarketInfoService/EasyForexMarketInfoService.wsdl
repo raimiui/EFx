@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="EasyForexMarketInfoService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="MarketInfoAPI_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://api.prp1-ezfx.com/API/MarketInfoService.svc?xsd=xsd2" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://api.prp1-ezfx.com/API/MarketInfoService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://api.prp1-ezfx.com/API/MarketInfoService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/EZFX.API.Common" />
+      <xsd:import schemaLocation="https://api.prp1-ezfx.com/API/MarketInfoService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/EZFX.Infrastructure.ErrorHandling" />
+      <xsd:import schemaLocation="https://api.prp1-ezfx.com/API/MarketInfoService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://api.prp1-ezfx.com/API/MarketInfoService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/EZFX.API.Common.InsideViewerData" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IEasyForexMarketInfoService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_Logout_InputMessage">
+    <wsdl:part name="parameters" element="tns:Logout" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_Logout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetHistoricalQuotes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistoricalQuotes" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetHistoricalQuotes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHistoricalQuotesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetIndices_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIndices" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetIndices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIndicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetNews_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNews" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetNews_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetFinancialCalendarData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFinancialCalendarData" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetFinancialCalendarData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFinancialCalendarDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetForexOutlook_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetForexOutlook" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetForexOutlook_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetForexOutlookResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetInterestRates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInterestRates" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetInterestRates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInterestRatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetInsideViewerData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInsideViewerData" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetInsideViewerData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInsideViewerDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetCurrencyList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrencyList" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetCurrencyList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrencyListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetNonBusinessDays_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNonBusinessDays" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetNonBusinessDays_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNonBusinessDaysResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetQuotes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuotes" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetQuotes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuotesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetCurrencySettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrencySettings" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetCurrencySettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrencySettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetCurrencyPairSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrencyPairSettings" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetCurrencyPairSettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrencyPairSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetIndicatorsSettings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIndicatorsSettings" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetIndicatorsSettings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIndicatorsSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetCrossCurrencyRates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCrossCurrencyRates" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetCrossCurrencyRates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCrossCurrencyRatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetInsideViewerCurrRate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInsideViewerCurrRate" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetInsideViewerCurrRate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInsideViewerCurrRateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetPopularityData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPopularityData" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetPopularityData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPopularityDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetFinancialCalendarDataHolidays_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFinancialCalendarDataHolidays" />
+  </wsdl:message>
+  <wsdl:message name="IEasyForexMarketInfoService_GetFinancialCalendarDataHolidays_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFinancialCalendarDataHolidaysResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IEasyForexMarketInfoService">
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/Login" message="tns:IEasyForexMarketInfoService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/LoginResponse" message="tns:IEasyForexMarketInfoService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/Logout" message="tns:IEasyForexMarketInfoService_Logout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/LogoutResponse" message="tns:IEasyForexMarketInfoService_Logout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHistoricalQuotes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetHistoricalQuotes" message="tns:IEasyForexMarketInfoService_GetHistoricalQuotes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetHistoricalQuotesResponse" message="tns:IEasyForexMarketInfoService_GetHistoricalQuotes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIndices">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetIndices" message="tns:IEasyForexMarketInfoService_GetIndices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetIndicesResponse" message="tns:IEasyForexMarketInfoService_GetIndices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNews">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetNews" message="tns:IEasyForexMarketInfoService_GetNews_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetNewsResponse" message="tns:IEasyForexMarketInfoService_GetNews_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFinancialCalendarData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetFinancialCalendarData" message="tns:IEasyForexMarketInfoService_GetFinancialCalendarData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetFinancialCalendarDataResponse" message="tns:IEasyForexMarketInfoService_GetFinancialCalendarData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetForexOutlook">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetForexOutlook" message="tns:IEasyForexMarketInfoService_GetForexOutlook_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetForexOutlookResponse" message="tns:IEasyForexMarketInfoService_GetForexOutlook_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInterestRates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetInterestRates" message="tns:IEasyForexMarketInfoService_GetInterestRates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetInterestRatesResponse" message="tns:IEasyForexMarketInfoService_GetInterestRates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInsideViewerData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetInsideViewerData" message="tns:IEasyForexMarketInfoService_GetInsideViewerData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetInsideViewerDataResponse" message="tns:IEasyForexMarketInfoService_GetInsideViewerData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetCurrencyList" message="tns:IEasyForexMarketInfoService_GetCurrencyList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetCurrencyListResponse" message="tns:IEasyForexMarketInfoService_GetCurrencyList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNonBusinessDays">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetNonBusinessDays" message="tns:IEasyForexMarketInfoService_GetNonBusinessDays_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetNonBusinessDaysResponse" message="tns:IEasyForexMarketInfoService_GetNonBusinessDays_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuotes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetQuotes" message="tns:IEasyForexMarketInfoService_GetQuotes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetQuotesResponse" message="tns:IEasyForexMarketInfoService_GetQuotes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencySettings">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetCurrencySettings" message="tns:IEasyForexMarketInfoService_GetCurrencySettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetCurrencySettingsResponse" message="tns:IEasyForexMarketInfoService_GetCurrencySettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyPairSettings">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetCurrencyPairSettings" message="tns:IEasyForexMarketInfoService_GetCurrencyPairSettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetCurrencyPairSettingsResponse" message="tns:IEasyForexMarketInfoService_GetCurrencyPairSettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIndicatorsSettings">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetIndicatorsSettings" message="tns:IEasyForexMarketInfoService_GetIndicatorsSettings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetIndicatorsSettingsResponse" message="tns:IEasyForexMarketInfoService_GetIndicatorsSettings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCrossCurrencyRates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetCrossCurrencyRates" message="tns:IEasyForexMarketInfoService_GetCrossCurrencyRates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetCrossCurrencyRatesResponse" message="tns:IEasyForexMarketInfoService_GetCrossCurrencyRates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInsideViewerCurrRate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetInsideViewerCurrRate" message="tns:IEasyForexMarketInfoService_GetInsideViewerCurrRate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetInsideViewerCurrRateResponse" message="tns:IEasyForexMarketInfoService_GetInsideViewerCurrRate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPopularityData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetPopularityData" message="tns:IEasyForexMarketInfoService_GetPopularityData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetPopularityDataResponse" message="tns:IEasyForexMarketInfoService_GetPopularityData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFinancialCalendarDataHolidays">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetFinancialCalendarDataHolidays" message="tns:IEasyForexMarketInfoService_GetFinancialCalendarDataHolidays_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEasyForexMarketInfoService/GetFinancialCalendarDataHolidaysResponse" message="tns:IEasyForexMarketInfoService_GetFinancialCalendarDataHolidays_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MarketInfoAPI" type="tns:IEasyForexMarketInfoService">
+    <wsp:PolicyReference URI="#MarketInfoAPI_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistoricalQuotes">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetHistoricalQuotes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIndices">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetIndices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNews">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFinancialCalendarData">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetFinancialCalendarData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetForexOutlook">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetForexOutlook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInterestRates">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetInterestRates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInsideViewerData">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetInsideViewerData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyList">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetCurrencyList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNonBusinessDays">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetNonBusinessDays" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuotes">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetQuotes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencySettings">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetCurrencySettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyPairSettings">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetCurrencyPairSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIndicatorsSettings">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetIndicatorsSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCrossCurrencyRates">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetCrossCurrencyRates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInsideViewerCurrRate">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetInsideViewerCurrRate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPopularityData">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetPopularityData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFinancialCalendarDataHolidays">
+      <soap:operation soapAction="http://tempuri.org/IEasyForexMarketInfoService/GetFinancialCalendarDataHolidays" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EasyForexMarketInfoService">
+    <wsdl:port name="MarketInfoAPI" binding="tns:MarketInfoAPI">
+      <soap:address location="https://api.prp1-ezfx.com/API/MarketInfoService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

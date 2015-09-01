@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.prp1-ezfx.com/API/TradingService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/EZFX.API.Common" />
+  <xs:import schemaLocation="https://api.prp1-ezfx.com/API/TradingService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="Login">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="applicationId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userPassword" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="LoginResult" nillable="true" type="q1:Session" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Logout">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LogoutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="LogoutResult" nillable="true" type="q2:APIOperationResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradableQuotes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="requestParams" nillable="true" type="q3:ArrayOfTradableQuoteRequestParams" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradableQuotesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="GetTradableQuotesResult" nillable="true" type="q4:TradableQuotes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewDayTradingDeal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="buyCurrency" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sellCurrency" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dealAmount" type="xs:double" />
+        <xs:element minOccurs="0" name="tradableQuoteId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="boundaryRate" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="stopLossRate" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="takeProfitRate" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="margin" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="takeProfitAmount" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="requestTag" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewDayTradingDealResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="NewDayTradingDealResult" nillable="true" type="q5:DayTrading" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewForwardDeal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="buyCurrency" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sellCurrency" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dealAmount" type="xs:double" />
+        <xs:element minOccurs="0" name="tradableQuoteId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="forwardDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="stopLossRate" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="takeProfitRate" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="margin" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="takeProfitAmount" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="requestTag" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewForwardDealResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="NewForwardDealResult" nillable="true" type="q6:Forward" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewLimitOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="buyCurrency" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sellCurrency" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dealAmount" type="xs:double" />
+        <xs:element minOccurs="0" name="rate" type="xs:double" />
+        <xs:element minOccurs="0" name="expiryDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="stopLossRate" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="takeProfitRate" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="margin" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="takeProfitAmount" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="requestTag" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewLimitOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="NewLimitOrderResult" nillable="true" type="q7:Limit" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateDayTrading">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dealId" type="xs:long" />
+        <xs:element minOccurs="0" name="newStopLossRate" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="newTakeProfitRate" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="newMargin" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="newTakeProfitAmount" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="removeCurrentTakeProfit" type="xs:boolean" />
+        <xs:element minOccurs="0" name="requestTag" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="removeCurrentStopLoss" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateDayTradingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="UpdateDayTradingResult" nillable="true" type="q8:DayTrading" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateForward">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dealId" type="xs:long" />
+        <xs:element minOccurs="0" name="newStopLossRate" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="newTakeProfitRate" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="newMargin" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="newTakeProfitAmount" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="removeCurrentTakeProfit" type="xs:boolean" />
+        <xs:element minOccurs="0" name="requestTag" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateForwardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="UpdateForwardResult" nillable="true" type="q9:Forward" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateLimit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dealId" type="xs:long" />
+        <xs:element minOccurs="0" name="newStopLossRate" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="newTakeProfitRate" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="newMargin" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="newTakeProfitAmount" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="removeCurrentTakeProfit" type="xs:boolean" />
+        <xs:element minOccurs="0" name="requestTag" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="removeCurrentStopLoss" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateLimitResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="UpdateLimitResult" nillable="true" type="q10:Limit" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDayTradingStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dealId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDayTradingStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="GetDayTradingStatusResult" nillable="true" type="q11:DayTrading" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetForwardStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dealId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetForwardStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="GetForwardStatusResult" nillable="true" type="q12:Forward" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLimitStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dealId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLimitStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="GetLimitStatusResult" nillable="true" type="q13:Limit" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CloseDayTrading">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dealId" type="xs:long" />
+        <xs:element minOccurs="0" name="tradableQuoteId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="boundaryRate" nillable="true" type="xs:double" />
+        <xs:element minOccurs="0" name="requestTag" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CloseDayTradingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="CloseDayTradingResult" nillable="true" type="q14:DayTrading" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CloseForward">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dealId" type="xs:long" />
+        <xs:element minOccurs="0" name="tradableQuoteId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="requestTag" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CloseForwardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="CloseForwardResult" nillable="true" type="q15:Forward" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelLimitOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dealId" type="xs:long" />
+        <xs:element minOccurs="0" name="requestTag" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelLimitOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="CancelLimitOrderResult" nillable="true" type="q16:Limit" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMyPosition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMyPositionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="GetMyPositionResult" nillable="true" type="q17:MyPosition" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="GetAccountStatusResult" nillable="true" type="q18:MyAccount" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQuotes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="currencyPairsList" nillable="true" type="q19:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQuotesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="GetQuotesResult" nillable="true" type="q20:Quotes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserSettings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserSettingsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="GetUserSettingsResult" nillable="true" type="q21:UserSettings" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExpiryDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="currency" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExpiryDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="GetExpiryDateResult" nillable="true" type="q22:ExpiryDate" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductSet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="dealType" type="q23:Products" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductSetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="GetProductSetResult" nillable="true" type="q24:ProductSet" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActiveSpreadsTemplate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActiveSpreadsTemplateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="GetActiveSpreadsTemplateResult" nillable="true" type="q25:SpreadsTemplateInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllowPersonalSpreads">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="currencyPairsList" nillable="true" type="q26:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllowPersonalSpreadsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="GetAllowPersonalSpreadsResult" nillable="true" type="q27:PersonalSpreadsInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClosedPosition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fromDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="toDate" type="xs:dateTime" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="dealType" nillable="true" type="q28:Products" />
+        <xs:element minOccurs="0" name="curPage" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="count" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClosedPositionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="GetClosedPositionResult" nillable="true" type="q29:MyPosition" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserLoginInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserLoginInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="GetUserLoginInfoResult" nillable="true" type="q30:UserLoginInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMyStatement">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fromDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="toDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="sortIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="sortType" type="xs:boolean" />
+        <xs:element minOccurs="0" name="count" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMyStatementResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="GetMyStatementResult" nillable="true" type="q31:MyStatement" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRollingDates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="productType" type="q32:Products" />
+        <xs:element minOccurs="0" name="buyCurrency" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sellCurrency" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRollingDatesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/EZFX.API.Common" minOccurs="0" name="GetRollingDatesResult" nillable="true" type="q33:RollingDatesResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

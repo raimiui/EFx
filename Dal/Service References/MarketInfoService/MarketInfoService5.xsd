@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EZFX.API.Common.InsideViewerData" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EZFX.API.Common.InsideViewerData" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.prp1-ezfx.com/API/MarketInfoService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/EZFX.API.Common" />
+  <xs:complexType name="InsideViewerCurrRate">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/EZFX.API.Common" base="q1:APIOperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BuyCurr" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CurrMidRate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CurrRate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SellCurr" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Spread" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InsideViewerCurrRate" nillable="true" type="tns:InsideViewerCurrRate" />
+  <xs:complexType name="CurrencyPairPopularityResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/EZFX.API.Common" base="q2:APIOperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CPPopularityItems" nillable="true" type="tns:ArrayOfCurrencyPairPopularityItem" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CurrencyPairPopularityResult" nillable="true" type="tns:CurrencyPairPopularityResult" />
+  <xs:complexType name="ArrayOfCurrencyPairPopularityItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CurrencyPairPopularityItem" nillable="true" type="tns:CurrencyPairPopularityItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCurrencyPairPopularityItem" nillable="true" type="tns:ArrayOfCurrencyPairPopularityItem" />
+  <xs:complexType name="CurrencyPairPopularityItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BaseCurrency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NonBaseCurrency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Popularity" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CurrencyPairPopularityItem" nillable="true" type="tns:CurrencyPairPopularityItem" />
+</xs:schema>

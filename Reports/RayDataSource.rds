@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="RayDataSource">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=92.61.37.52\SQLExpress;Initial Catalog=EFx; User Id=sa;Password=SDT3423WQE%h;</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>e2cbacee-e717-49b0-a47d-be5eff940a82</DataSourceID>
+</RptDataSource>

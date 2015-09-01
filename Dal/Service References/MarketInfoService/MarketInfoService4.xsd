@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.prp1-ezfx.com/API/MarketInfoService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/EZFX.API.Common" />
+  <xs:complexType name="ArrayOfstring">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
+  <xs:complexType name="ArrayOfKeyValueOfstringArrayOfKeyValueOfInterestRatesPeriodsdoubleHEZkgemYty7Ep6D1">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfstringArrayOfKeyValueOfInterestRatesPeriodsdoubleHEZkgemYty7Ep6D1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" nillable="true" type="xs:string" />
+            <xs:element name="Value" nillable="true" type="tns:ArrayOfKeyValueOfInterestRatesPeriodsdoubleHEZkgemY" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfstringArrayOfKeyValueOfInterestRatesPeriodsdoubleHEZkgemYty7Ep6D1" nillable="true" type="tns:ArrayOfKeyValueOfstringArrayOfKeyValueOfInterestRatesPeriodsdoubleHEZkgemYty7Ep6D1" />
+  <xs:complexType name="ArrayOfKeyValueOfInterestRatesPeriodsdoubleHEZkgemY">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfInterestRatesPeriodsdoubleHEZkgemY">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EZFX.API.Common" name="Key" type="q1:InterestRatesPeriods" />
+            <xs:element name="Value" type="xs:double" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfInterestRatesPeriodsdoubleHEZkgemY" nillable="true" type="tns:ArrayOfKeyValueOfInterestRatesPeriodsdoubleHEZkgemY" />
+  <xs:complexType name="ArrayOfdateTime">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="dateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfdateTime" nillable="true" type="tns:ArrayOfdateTime" />
+</xs:schema>

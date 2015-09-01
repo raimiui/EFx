@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="EFx.Model" assembly="EFx.Model">
+  <class name="Quote" table="Quote">
+    <id name="Id" column="Id" type="int">
+      <generator class="native" />
+    </id>
+    <property name="Open" column="[Open]" />
+    <property name="Close" column="[Close]" />
+    <property name="High" />
+    <property name="Low" />
+    <property name="CreatedOn" />
+    <many-to-one name="Trade" column="Trade_Id"/>
+      
+  </class>
+</hibernate-mapping>
